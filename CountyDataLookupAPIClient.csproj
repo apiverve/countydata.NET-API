@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>APIVerve.API.CountyDataLookup</Title>
+    <Version>1.0.0</Version>
+    <Authors>APIVerve</Authors>
+    <Company>APIVerve</Company>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>False</PackageRequireLicenseAcceptance>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <PackageProjectUrl>https://apiverve.com/marketplace/api/countydata</PackageProjectUrl>
+    <SignAssembly>False</SignAssembly>
+    <Description>County Data is a simple tool for getting data about US counties. It returns information such as population, area, and more based on the county name provided.</Description>
+    <RepositoryUrl>https://github.com/apiverve/countydata-NET</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>county data; county data api; county data tool; county data software; county data service; county data library; county data sdk; county data code; county data script; county data program; county data application; county data app; county data utility; county data helper; county data helper tool; county data helper software; county data helper service; county data helper library; county data helper sdk; county data helper code; county data helper script; county data helper program; county data helper application; county data helper app; county data helper utility; county data helper</PackageTags>
+    <Copyright>©2024 APIVerve. All Rights Reserved</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
