@@ -6,6 +6,57 @@ namespace APIVerve
 {
 public class age
 {
+    [JsonProperty("0-4")]
+    public double 04 { get; set; }
+
+    [JsonProperty("5-9")]
+    public double 59 { get; set; }
+
+    [JsonProperty("10-14")]
+    public double 1014 { get; set; }
+
+    [JsonProperty("15-19")]
+    public double 1519 { get; set; }
+
+    [JsonProperty("20-24")]
+    public double 2024 { get; set; }
+
+    [JsonProperty("25-29")]
+    public double 2529 { get; set; }
+
+    [JsonProperty("30-34")]
+    public double 3034 { get; set; }
+
+    [JsonProperty("35-39")]
+    public double 3539 { get; set; }
+
+    [JsonProperty("40-44")]
+    public double 4044 { get; set; }
+
+    [JsonProperty("45-49")]
+    public double 4549 { get; set; }
+
+    [JsonProperty("50-54")]
+    public double 5054 { get; set; }
+
+    [JsonProperty("55-59")]
+    public double 5559 { get; set; }
+
+    [JsonProperty("60-64")]
+    public double 6064 { get; set; }
+
+    [JsonProperty("65-69")]
+    public double 6569 { get; set; }
+
+    [JsonProperty("70-74")]
+    public double 7074 { get; set; }
+
+    [JsonProperty("75-79")]
+    public double 7579 { get; set; }
+
+    [JsonProperty("80-84")]
+    public double 8084 { get; set; }
+
     [JsonProperty("85+")]
     public double 85 { get; set; }
 
@@ -16,112 +67,121 @@ public class deaths
     [JsonProperty("suicides")]
     public double suicides { get; set; }
 
-    [JsonProperty("firearm suicides")]
-    public double firearmsuicides { get; set; }
-
     [JsonProperty("homicides")]
     public double homicides { get; set; }
 
     [JsonProperty("vehicle")]
     public int vehicle { get; set; }
 
+    [JsonProperty("firearmsuicides")]
+    public double firearmsuicides { get; set; }
+
 }
 
 public class health
 {
-    [JsonProperty("poorHealth")]
-    public double poorHealth { get; set; }
+    [JsonProperty("poorhealth")]
+    public double poorhealth { get; set; }
 
-    [JsonProperty("physicallyUnhealthyDays")]
-    public double physicallyUnhealthyDays { get; set; }
+    [JsonProperty("physicallyunhealthydays")]
+    public double physicallyunhealthydays { get; set; }
 
-    [JsonProperty("mentallyUnhealthyDays")]
-    public double mentallyUnhealthyDays { get; set; }
+    [JsonProperty("mentallyunhealthydays")]
+    public double mentallyunhealthydays { get; set; }
 
-    [JsonProperty("lowBirthweightPercent")]
-    public double lowBirthweightPercent { get; set; }
+    [JsonProperty("lowbirthweightpercent")]
+    public double lowbirthweightpercent { get; set; }
 
-    [JsonProperty("smokersPercent")]
-    public double smokersPercent { get; set; }
+    [JsonProperty("smokerspercent")]
+    public double smokerspercent { get; set; }
 
-    [JsonProperty("obesityPercent")]
-    public double obesityPercent { get; set; }
+    [JsonProperty("obesitypercent")]
+    public double obesitypercent { get; set; }
 
-    [JsonProperty("foodEnvIndex")]
-    public double foodEnvIndex { get; set; }
+    [JsonProperty("foodenvindex")]
+    public double foodenvindex { get; set; }
 
-    [JsonProperty("physicallyInactivePercent")]
-    public double physicallyInactivePercent { get; set; }
+    [JsonProperty("physicallyinactivepercent")]
+    public double physicallyinactivepercent { get; set; }
 
-    [JsonProperty("excessiveDrinkingPercent")]
-    public double excessiveDrinkingPercent { get; set; }
+    [JsonProperty("excessivedrinkingpercent")]
+    public double excessivedrinkingpercent { get; set; }
 
-    [JsonProperty("Teen Birth Rate")]
-    public double teenBirthRate { get; set; }
+    [JsonProperty("alcoholimpaireddrivingdeaths")]
+    public int alcoholimpaireddrivingdeaths { get; set; }
 
-    [JsonProperty("% Uninsured")]
+    [JsonProperty("teenbirthrate")]
+    public double teenbirthrate { get; set; }
+
+    [JsonProperty("uninsured")]
     public double uninsured { get; set; }
 
-    [JsonProperty("% With Annual Mammogram")]
-    public int withAnnualMammogram { get; set; }
+    [JsonProperty("withannualmammogram")]
+    public int withannualmammogram { get; set; }
 
-    [JsonProperty("% Vaccinated")]
+    [JsonProperty("vaccinated")]
     public int vaccinated { get; set; }
 
-    [JsonProperty("% Children in Poverty")]
-    public double childreninPoverty { get; set; }
+    [JsonProperty("childreninpoverty")]
+    public double childreninpoverty { get; set; }
 
-    [JsonProperty("80th Percentile Income")]
-    public int 80thPercentileIncome { get; set; }
+    [JsonProperty("80thpercentileincome")]
+    public int 80thpercentileincome { get; set; }
 
-    [JsonProperty("20th Percentile Income")]
-    public int 20thPercentileIncome { get; set; }
+    [JsonProperty("20thpercentileincome")]
+    public int 20thpercentileincome { get; set; }
 
-    [JsonProperty("Violent Crime Rate")]
-    public double violentCrimeRate { get; set; }
+    [JsonProperty("childreninsingleparenthouseholds")]
+    public double childreninsingleparenthouseholds { get; set; }
 
-    [JsonProperty("Average Daily PM2.5")]
-    public double averageDailyPM25 { get; set; }
+    [JsonProperty("violentcrimerate")]
+    public double violentcrimerate { get; set; }
 
-    [JsonProperty("% Severe Housing Problems")]
-    public double severeHousingProblems { get; set; }
+    [JsonProperty("averagedailypm25")]
+    public double averagedailypm25 { get; set; }
 
-    [JsonProperty("% Drive Alone to Work")]
-    public double driveAlonetoWork { get; set; }
+    [JsonProperty("severehousingproblems")]
+    public double severehousingproblems { get; set; }
+
+    [JsonProperty("drivealonetowork")]
+    public double drivealonetowork { get; set; }
+
+    [JsonProperty("longcommutedrivesalone")]
+    public double longcommutedrivesalone { get; set; }
 
 }
 
 public class education
 {
-    [JsonProperty("bachelors+")]
+    [JsonProperty("lessthanhighschool")]
+    public double lessthanhighschool { get; set; }
+
+    [JsonProperty("highschool")]
+    public double highschool { get; set; }
+
+    [JsonProperty("somecollege")]
+    public double somecollege { get; set; }
+
+    [JsonProperty("bachelors")]
     public double bachelors { get; set; }
-
-    [JsonProperty("lessThanHighSchool")]
-    public double lessThanHighSchool { get; set; }
-
-    [JsonProperty("highSchool")]
-    public double highSchool { get; set; }
-
-    [JsonProperty("someCollege")]
-    public double someCollege { get; set; }
 
 }
 
-public class costOfLiving
+public class costofliving
 {
-    [JsonProperty("living_wage")]
+    [JsonProperty("livingwage")]
     public double livingwage { get; set; }
 
-    [JsonProperty("food_costs")]
+    [JsonProperty("foodcosts")]
     public int foodcosts { get; set; }
 
-    [JsonProperty("medical_costs")]
+    [JsonProperty("medicalcosts")]
     public int medicalcosts { get; set; }
 
-    [JsonProperty("housing_costs")]
+    [JsonProperty("housingcosts")]
     public int housingcosts { get; set; }
 
-    [JsonProperty("tax_costs")]
+    [JsonProperty("taxcosts")]
     public int taxcosts { get; set; }
 
 }
@@ -146,17 +206,8 @@ public class data
     [JsonProperty("deaths")]
     public deaths deaths { get; set; }
 
-    [JsonProperty("avg_income")]
-    public int avgincome { get; set; }
-
     [JsonProperty("health")]
     public health health { get; set; }
-
-    [JsonProperty("landAreaKM2")]
-    public double landAreaKM2 { get; set; }
-
-    [JsonProperty("areaKM2")]
-    public double areaKM2 { get; set; }
 
     [JsonProperty("longitude")]
     public double longitude { get; set; }
@@ -164,20 +215,29 @@ public class data
     [JsonProperty("latitude")]
     public double latitude { get; set; }
 
-    [JsonProperty("zipCodes")]
-    public string[] zipCodes { get; set; }
-
-    [JsonProperty("lifeExpectancy")]
-    public double lifeExpectancy { get; set; }
-
     [JsonProperty("education")]
     public education education { get; set; }
 
-    [JsonProperty("povertyRate")]
-    public double povertyRate { get; set; }
+    [JsonProperty("zipcodes")]
+    public string[] zipcodes { get; set; }
 
-    [JsonProperty("costOfLiving")]
-    public costOfLiving costOfLiving { get; set; }
+    [JsonProperty("lifeexpectancy")]
+    public double lifeexpectancy { get; set; }
+
+    [JsonProperty("avgincome")]
+    public int avgincome { get; set; }
+
+    [JsonProperty("povertyrate")]
+    public double povertyrate { get; set; }
+
+    [JsonProperty("costofliving")]
+    public costofliving costofliving { get; set; }
+
+    [JsonProperty("landareakm2")]
+    public double landareakm2 { get; set; }
+
+    [JsonProperty("areakm2")]
+    public double areakm2 { get; set; }
 
 }
 
