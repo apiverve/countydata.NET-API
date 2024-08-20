@@ -70,7 +70,7 @@ Using the API client, you can perform requests to the API.
 ###### Define Query
 
 ```
-var queryOptions = new countydataQueryOptions {
+var queryOptions = new CountyDataLookupQueryOptions {
   state = "MO",
   county = "Jackson"
 };
@@ -251,7 +251,8 @@ if(response.error != null) {
     },
     "landareakm2": 1565.601892,
     "areakm2": 1596.319707
-  }
+  },
+  "code": 200
 }
 ```
 
