@@ -1,4 +1,4 @@
-County Data Lookup API
+APIVerve.API.CountyDataLookup API
 ============
 
 County Data is a simple tool for getting data about US counties. It returns information such as average income, area, and more based on the county name provided.
@@ -7,7 +7,7 @@ County Data is a simple tool for getting data about US counties. It returns info
 ![Code Climate](https://img.shields.io/badge/maintainability-B-purple)
 ![Prod Ready](https://img.shields.io/badge/production-ready-blue)
 
-This is a .NET Wrapper for the [County Data Lookup API](https://apiverve.com/marketplace/api/countydata)
+This is a .NET Wrapper for the [APIVerve.API.CountyDataLookup API](https://apiverve.com/marketplace/countydata)
 
 ---
 
@@ -30,67 +30,347 @@ Install-Package APIVerve.API.CountyDataLookup
 
 From within Visual Studio:
 
-1. Open the Solution Explorer.
-2. Right-click on a project within your solution.
-3. Click on Manage NuGet Packages..
-4. Click on the Browse tab and search for "APIVerve.API.CountyDataLookup".
-5. Click on the APIVerve.API.CountyDataLookup package, click Install.
-
+1. Open the Solution Explorer
+2. Right-click on a project within your solution
+3. Click on Manage NuGet Packages
+4. Click on the Browse tab and search for "APIVerve.API.CountyDataLookup"
+5. Click on the APIVerve.API.CountyDataLookup package, select the appropriate version in the right-tab and click Install
 
 ---
 
 ## Configuration
 
-Before using the countydata API client, you have to setup your account and obtain your API Key.  
+Before using the countydata API client, you have to setup your account and obtain your API Key.
 You can get it by signing up at [https://apiverve.com](https://apiverve.com)
+
+---
+
+## Quick Start
+
+Here's a simple example to get you started quickly:
+
+```csharp
+using System;
+using APIVerve;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        // Initialize the API client
+        var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+        var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+        // Make the API call
+        try
+        {
+            var response = await apiClient.ExecuteAsync(queryOptions);
+
+            if (response.Error != null)
+            {
+                Console.WriteLine($"API Error: {response.Error}");
+            }
+            else
+            {
+                Console.WriteLine("Success!");
+                // Access response data using the strongly-typed ResponseObj properties
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception: {ex.Message}");
+        }
+    }
+}
+```
 
 ---
 
 ## Usage
 
-The County Data Lookup API documentation is found here: [https://docs.apiverve.com/api/countydata](https://docs.apiverve.com/api/countydata).  
+The APIVerve.API.CountyDataLookup API documentation is found here: [https://docs.apiverve.com/ref/countydata](https://docs.apiverve.com/ref/countydata).
 You can find parameters, example responses, and status codes documented here.
 
 ### Setup
 
 ###### Authentication
-County Data Lookup API uses API Key-based authentication. When you create an instance of the API client, you can pass your API Key as a parameter.
+APIVerve.API.CountyDataLookup API uses API Key-based authentication. When you create an instance of the API client, you can pass your API Key as a parameter.
 
-```
+```csharp
 // Create an instance of the API client
-var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]", true);
+var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
 ```
 
 ---
 
+## Usage Examples
 
-### Perform Request
-Using the API client, you can perform requests to the API.
+### Basic Usage (Async/Await Pattern - Recommended)
 
-###### Define Query
+The modern async/await pattern provides the best performance and code readability:
 
+```csharp
+using System;
+using System.Threading.Tasks;
+using APIVerve;
+
+public class Example
+{
+    public static async Task Main(string[] args)
+    {
+        var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+        var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+        var response = await apiClient.ExecuteAsync(queryOptions);
+
+        if (response.Error != null)
+        {
+            Console.WriteLine($"Error: {response.Error}");
+        }
+        else
+        {
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
+        }
+    }
+}
 ```
+
+### Synchronous Usage
+
+If you need to use synchronous code, you can use the `Execute` method:
+
+```csharp
+using System;
+using APIVerve;
+
+public class Example
+{
+    public static void Main(string[] args)
+    {
+        var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+        var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+        var response = apiClient.Execute(queryOptions);
+
+        if (response.Error != null)
+        {
+            Console.WriteLine($"Error: {response.Error}");
+        }
+        else
+        {
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
+        }
+    }
+}
+```
+
+---
+
+## Error Handling
+
+The API client provides comprehensive error handling. Here are some examples:
+
+### Handling API Errors
+
+```csharp
+using System;
+using System.Threading.Tasks;
+using APIVerve;
+
+public class Example
+{
+    public static async Task Main(string[] args)
+    {
+        var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+        var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+        try
+        {
+            var response = await apiClient.ExecuteAsync(queryOptions);
+
+            // Check for API-level errors
+            if (response.Error != null)
+            {
+                Console.WriteLine($"API Error: {response.Error}");
+                Console.WriteLine($"Status: {response.Status}");
+                return;
+            }
+
+            // Success - use the data
+            Console.WriteLine("Request successful!");
+            Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
+        }
+        catch (ArgumentException ex)
+        {
+            // Invalid API key or parameters
+            Console.WriteLine($"Invalid argument: {ex.Message}");
+        }
+        catch (System.Net.Http.HttpRequestException ex)
+        {
+            // Network or HTTP errors
+            Console.WriteLine($"Network error: {ex.Message}");
+        }
+        catch (Exception ex)
+        {
+            // Other errors
+            Console.WriteLine($"Unexpected error: {ex.Message}");
+        }
+    }
+}
+```
+
+### Comprehensive Error Handling with Retry Logic
+
+```csharp
+using System;
+using System.Threading.Tasks;
+using APIVerve;
+
+public class Example
+{
+    public static async Task Main(string[] args)
+    {
+        var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+        // Configure retry behavior (max 3 retries)
+        apiClient.SetMaxRetries(3);        // Retry up to 3 times (default: 0, max: 3)
+        apiClient.SetRetryDelay(2000);     // Wait 2 seconds between retries
+
+        var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+        try
+        {
+            var response = await apiClient.ExecuteAsync(queryOptions);
+
+            if (response.Error != null)
+            {
+                Console.WriteLine($"API Error: {response.Error}");
+            }
+            else
+            {
+                Console.WriteLine("Success!");
+                Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed after retries: {ex.Message}");
+        }
+    }
+}
+```
+
+---
+
+## Advanced Features
+
+### Custom Headers
+
+Add custom headers to your requests:
+
+```csharp
+var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+// Add custom headers
+apiClient.AddCustomHeader("X-Custom-Header", "custom-value");
+apiClient.AddCustomHeader("X-Request-ID", Guid.NewGuid().ToString());
+
 var queryOptions = new CountyDataLookupQueryOptions {
   state = "MO",
   county = "Jackson"
 };
+
+var response = await apiClient.ExecuteAsync(queryOptions);
+
+// Remove a header
+apiClient.RemoveCustomHeader("X-Custom-Header");
+
+// Clear all custom headers
+apiClient.ClearCustomHeaders();
 ```
 
-###### Simple Request
+### Request Logging
 
+Enable logging for debugging:
+
+```csharp
+var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]", isDebug: true);
+
+// Or use a custom logger
+apiClient.SetLogger(message =>
+{
+    Console.WriteLine($"[LOG] {DateTime.Now:yyyy-MM-dd HH:mm:ss} - {message}");
+});
+
+var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+var response = await apiClient.ExecuteAsync(queryOptions);
 ```
-var response = apiClient.Execute(queryOptions);
-if(response.error != null) {
-	Console.WriteLine(response.error);
-} else {
-    var jsonResponse = JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented);
-    Console.WriteLine(jsonResponse);
+
+### Retry Configuration
+
+Customize retry behavior for failed requests:
+
+```csharp
+var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]");
+
+// Set retry options
+apiClient.SetMaxRetries(3);           // Retry up to 3 times (default: 0, max: 3)
+apiClient.SetRetryDelay(1500);        // Wait 1.5 seconds between retries (default: 1000ms)
+
+var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+
+var response = await apiClient.ExecuteAsync(queryOptions);
+```
+
+### Dispose Pattern
+
+The API client implements `IDisposable` for proper resource cleanup:
+
+```csharp
+using (var apiClient = new CountyDataLookupAPIClient("[YOUR_API_KEY]"))
+{
+    var queryOptions = new CountyDataLookupQueryOptions {
+  state = "MO",
+  county = "Jackson"
+};
+    var response = await apiClient.ExecuteAsync(queryOptions);
+    Console.WriteLine(Newtonsoft.Json.JsonConvert.SerializeObject(response, Newtonsoft.Json.Formatting.Indented));
 }
+// HttpClient is automatically disposed here
 ```
 
-###### Example Response
+---
 
-```
+## Example Response
+
+```json
 {
   "status": "ok",
   "error": null,
@@ -100,22 +380,22 @@ if(response.error != null) {
     "age": {
       "0-4": 0.0644100874666257,
       "5-9": 0.06532756955438819,
-      "10-14": 0.065950603902357144,
+      "10-14": 0.06595060390235714,
       "15-19": 0.05967616438434107,
       "20-24": 0.059725950234064615,
-      "25-29": 0.081924749399369279,
-      "30-34": 0.075233531196524664,
+      "25-29": 0.08192474939936928,
+      "30-34": 0.07523353119652466,
       "35-39": 0.06868029092005673,
-      "40-44": 0.058310609649066661,
+      "40-44": 0.05831060964906666,
       "45-49": 0.058805623240603636,
       "50-54": 0.05858087569042305,
       "55-59": 0.0674783182624454,
-      "60-64": 0.062084377058111463,
+      "60-64": 0.06208437705811146,
       "65-69": 0.05099777955110233,
-      "70-74": 0.038915465049622268,
+      "70-74": 0.03891546504962227,
       "75-79": 0.026437708656052324,
-      "80-84": 0.017489057781457189,
-      "85+": 0.019971238003388282
+      "80-84": 0.01748905778145719,
+      "85+": 0.01997123800338828
     },
     "male": 339932,
     "female": 363079,
@@ -150,7 +430,7 @@ if(response.error != null) {
       "drivealonetowork": 83.470246386,
       "longcommutedrivesalone": 33.7
     },
-    "longitude": -94.347496655033936,
+    "longitude": -94.34749665503394,
     "latitude": 39.016701918102484,
     "education": {
       "lessthanhighschool": 9.4,
@@ -251,8 +531,7 @@ if(response.error != null) {
     },
     "landareakm2": 1565.601892,
     "areakm2": 1596.319707
-  },
-  "code": 200
+  }
 }
 ```
 
